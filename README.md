@@ -8,7 +8,7 @@
 
 如果觉得好用的话，Buy Me One Coffee，Please，Thank you very much！
 
-![video](https://github.com/He-JYang/AI_dual-column_search/blob/main/Demo.mp4)
+[![video](https://github.com/He-JYang/AI_dual-column_search/blob/main/Demo.mp4)](https://github.com/user-attachments/assets/049f3418-eba8-49f1-b837-18b820bca65c)
 
 ![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/page_1.png)
 
