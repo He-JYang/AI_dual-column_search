@@ -4,7 +4,7 @@
 // @version      1.3
 // @description  在自定义页面上提供双栏搜索：左侧传统引擎，右侧大模型问答
 // @author       HubertJason
-// @match        https://www.hao123.com/*
+// @match        https://www.hao123.com
 // @grant        none
 // @run-at       document-start  // 👈 提前到 document-start，更早干预
 // ==/UserScript==
@@ -127,9 +127,14 @@
         const leftFrame = document.getElementById('leftFrame');
         const rightFrame = document.getElementById('rightFrame');
 
+        searchInput.focus();
+
         function performSearch() {
             const query = searchInput.value.trim();
             if (!query) return;
+
+            // 👇 更新页面标题为搜索内容
+            document.title = query;
 
             const q = encodeURIComponent(query);
             let leftUrl = '';
