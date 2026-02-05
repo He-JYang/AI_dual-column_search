@@ -52,7 +52,7 @@ https://github.com/user-attachments/assets/c1c4f2dc-4dfd-443c-a6c5-6b746cdd109c
 
 https://github.com/user-attachments/assets/4954ba32-510e-4e6c-8c49-dd983d876816
 
-![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/assert/page_4.png)
+![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/assert/page_11.png)
 
 ![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/assert/page_5.png)
 
