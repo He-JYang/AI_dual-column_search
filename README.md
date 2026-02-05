@@ -1,4 +1,15 @@
 # English Edition
+
+## Introduction
+
+With the rapid emergence of large language models and the proliferation of search engines, how to obtain information quickly, efficiently, and comprehensively has become a question worth serious consideration.
+
+Rather than debating whether traditional search engines are more useful or AI large models provide more accurate answers, this plugin is designed to help you view search engine results and responses from multiple large models at the same time.
+
+For complex questions, a single query can simultaneously retrieve answers from **Bing**, **Google**, **ChatGPT**, **Gemini**, **Qwen**, and **Kimi**.
+
+For simple questions, a single page enables fast, side-by-side browsing of **Bing** and **Kimi** results in a dual-column layout.
+
 ## Quick Start
 
 **Clone or download the project, then double-click `ai_search_dual_panel.html` to experience simultaneous access to Bing and Kimi.**
@@ -13,6 +24,17 @@ The `ScriptHistory` folder contains legacy scripts for development reference onl
 
 
 # 中文版
+
+## 项目介绍
+
+大模型层出不穷，搜索引擎众多，如何快速、高效、全面地获取信息，已成为一个值得深入思考的问题。
+
+不必纠结于究竟是搜索引擎更好用，还是 AI 大模型的回答更准确。本插件旨在帮助你**同时浏览搜索引擎的结果与多个大模型的回答**。
+
+**复杂问题**：一次提问，即可同时获取来自 **Bing、Google、ChatGPT、Gemini、Qwen、Kimi** 的回答结果。
+**简单问题**：在同一页面中，以**双栏布局**快速浏览 **Bing** 与 **Kimi** 的回答内容。
+
+
 ## 快速开始
 
 **克隆或下载项目后，直接双击 `ai_search_dual_panel.html` 打开即可体验 Bing 和 Kimi 同时访问。**
