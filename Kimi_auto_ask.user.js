@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Kimi 自动提问（模拟回车发送）
+// @name         Kimi auto ask
 // @namespace    http://tampermonkey.net/
 // @version      1.8
 // @description  在 www.kimi.com 上自动输入问题并模拟按下 Enter 发送

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI + 搜索双栏助手</title>
+  <link rel="icon" href="page_icon.png" type="image/png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f7fa;
+    }
+    .search-bar {
+      padding: 8px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .search-bar input {
+      flex: 1;
+      min-width: 320px;
+      max-width: 900px;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+    .search-bar button {
+      padding: 8px 16px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .search-bar button:hover {
+      background: #3367d6;
+    }
+    .search-bar select {
+      padding: 6px 8px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .container {
+      display: flex;
+      height: calc(100vh - 50px);
+    }
+    .panel {
+      flex: 1;
+      padding: 10px;
+      position: relative;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .iframe-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="请输入搜索内容..." />
+    <button type="button" id="searchBtn">搜索</button>
+    <span>左侧：</span>
+    <select id="engineSelect">
+      <option value="bing">Bing</option>
+      <option value="google">Google</option>
+    </select>
+    <span>右侧：</span>
+    <select id="aiSelect">
+      <option value="kimi">Kimi</option>
+      <option value="qwen">Qwen</option>
+      <option value="gpt">ChatGPT</option>
+      <option value="gemini">Gemini</option>
+      <option value="ALL">ALL（多窗口）</option>
+    </select>
+  </div>
+  <div class="container">
+    <div class="panel" id="leftPanel">
+      <div class="iframe-overlay" id="leftOverlay"></div>
+      <iframe id="leftFrame" src="about:blank"></iframe>
+    </div>
+    <div class="panel">
+      <iframe id="rightFrame" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const engineSelect = document.getElementById('engineSelect');
+    const aiSelect = document.getElementById('aiSelect');
+    const leftFrame = document.getElementById('leftFrame');
+    const rightFrame = document.getElementById('rightFrame');
+    const leftOverlay = document.getElementById('leftOverlay');
+
+    // 聚焦输入框
+    searchInput.focus();
+
+    // 点击蒙版聚焦输入框并移除
+    leftOverlay.addEventListener('click', function () {
+      searchInput.focus();
+      searchInput.style.outline = '2px solid #4285f4';
+      setTimeout(() => {
+        searchInput.style.outline = '';
+      }, 300);
+      this.remove();
+    });
+
+    function performSearch() {
+      // 移除蒙版（如果存在）
+      const existingOverlay = document.getElementById('leftOverlay');
+      if (existingOverlay) existingOverlay.remove();
+
+      const query = searchInput.value.trim();
+      if (!query) return;
+
+      document.title = query;
+      const q = encodeURIComponent(query);
+
+      // 左侧：传统搜索引擎
+      const leftUrl = engineSelect.value === 'google'
+        ? `https://www.google.com/search?q=${q}`
+        : `https://www.bing.com/search?q=${q}`;
+
+      // 右侧：AI 助手（默认占位，部分跳新窗口）
+      let rightUrl = 'about:blank';
+      const ai = aiSelect.value;
+
+      if (ai === 'kimi') {
+        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
+      } else if (ai === 'qwen') {
+        window.open(`https://tongyi.aliyun.com/qianwen/?q=${q}`, '_blank');
+      } else if (ai === 'gpt') {
+        window.open(`https://chatgpt.com/?q=${q}`, '_blank');
+      } else if (ai === 'gemini') {
+        window.open(`https://gemini.google.com/?q=${q}`, '_blank');
+      } else if (ai === 'ALL') {
+        // 所有 AI 新窗口打开（避免 iframe 被拦截）
+        window.open(`https://kimi.moonshot.cn/?q=${q}`, '_blank');
+        window.open(`https://tongyi.aliyun.com/qianwen/?q=${q}`, '_blank');
+        window.open(`https://chatgpt.com/?q=${q}`, '_blank');
+        window.open(`https://gemini.google.com/?q=${q}`, '_blank');
+        // 同时也打开一个传统搜索（可选）
+        setTimeout(() => {
+          window.open(`https://www.google.com/search?q=${q}`, '_blank');
+        }, 800);
+      }
+
+      leftFrame.src = leftUrl;
+      rightFrame.src = rightUrl;
+    }
+
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') performSearch();
+    });
+  </script>
+</body>
+</html>
