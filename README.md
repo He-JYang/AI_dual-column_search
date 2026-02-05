@@ -32,6 +32,7 @@ The `ScriptHistory` folder contains legacy scripts for development reference onl
 不必纠结于究竟是搜索引擎更好用，还是 AI 大模型的回答更准确。本插件旨在帮助你**同时浏览搜索引擎的结果与多个大模型的回答**。
 
 **复杂问题**：一次提问，即可同时获取来自 **Bing、Google、ChatGPT、Gemini、Qwen、Kimi** 的回答结果。
+
 **简单问题**：在同一页面中，以**双栏布局**快速浏览 **Bing** 与 **Kimi** 的回答内容。
 
 
