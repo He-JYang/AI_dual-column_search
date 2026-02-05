@@ -48,10 +48,11 @@ The `ScriptHistory` folder contains legacy scripts for development reference onl
 
 `ScriptHistory` 为历史脚本，作为开发参考，仅安装无需使用该文件夹。
 
-https://github.com/user-attachments/assets/67d35da5-f912-495d-89d3-57ff80a7b2e1
+https://github.com/user-attachments/assets/c1c4f2dc-4dfd-443c-a6c5-6b746cdd109c
 
-![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/assert/page_1.png)
+https://github.com/user-attachments/assets/4954ba32-510e-4e6c-8c49-dd983d876816
 
-![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/assert/page_2.png)
+![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/assert/page_4.png)
 
-![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/assert/page_3.png)
+![img](https://github.com/He-JYang/AI_dual-column_search/blob/main/assert/page_5.png)
+
