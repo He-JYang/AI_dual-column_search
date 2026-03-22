@@ -138,10 +138,11 @@
       document.title = query;
       const q = encodeURIComponent(query);
 
-      // 左侧：传统搜索引擎
-      const leftUrl = engineSelect.value === 'google'
-        ? `https://www.google.com/search?q=${q}`
-        : `https://www.bing.com/search?q=${q}`;
+      // 左侧 iframe 固定使用 Bing；若选择 Google，则额外新开窗口
+      const leftUrl = `https://www.bing.com/search?q=${q}`;
+      if (engineSelect.value === 'google') {
+        window.open(`https://www.google.com/search?q=${q}`, '_blank');
+      }
 
       // 右侧：AI 助手（默认占位，部分跳新窗口）
       let rightUrl = 'about:blank';
@@ -150,13 +151,17 @@
       if (ai === 'kimi') {
         rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
       } else if (ai === 'qwen') {
+        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
         window.open(`https://tongyi.aliyun.com/qianwen/?q=${q}`, '_blank');
       } else if (ai === 'gpt') {
+        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
         window.open(`https://chatgpt.com/?q=${q}`, '_blank');
       } else if (ai === 'gemini') {
+        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
         window.open(`https://gemini.google.com/?q=${q}`, '_blank');
       } else if (ai === 'ALL') {
         // 所有 AI 新窗口打开（避免 iframe 被拦截）
+        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
         window.open(`https://kimi.moonshot.cn/?q=${q}`, '_blank');
         window.open(`https://tongyi.aliyun.com/qianwen/?q=${q}`, '_blank');
         window.open(`https://chatgpt.com/?q=${q}`, '_blank');
