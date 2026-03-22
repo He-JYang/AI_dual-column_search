@@ -13,7 +13,7 @@
     'use strict';
 
     const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('q');
+    const query = urlParams.get('prompt');
     if (!query) return;
 
     console.log('🤖 GPT 自动提问（修复版）启动');

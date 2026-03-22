@@ -81,6 +81,7 @@
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="请输入搜索内容..." />
     <button type="button" id="searchBtn">搜索</button>
+    <button type="button" id="augmentBtn">增广搜索</button>
     <span>左侧：</span>
     <select id="engineSelect">
       <option value="bing">Bing</option>
@@ -108,6 +109,7 @@
   <script>
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.getElementById('searchBtn');
+    const augmentBtn = document.getElementById('augmentBtn');
     const engineSelect = document.getElementById('engineSelect');
     const aiSelect = document.getElementById('aiSelect');
     const leftFrame = document.getElementById('leftFrame');
@@ -155,7 +157,7 @@
         window.open(`https://tongyi.aliyun.com/qianwen/?q=${q}`, '_blank');
       } else if (ai === 'gpt') {
         rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
-        window.open(`https://chatgpt.com/?q=${q}`, '_blank');
+        window.open(`https://chatgpt.com/?prompt=${q}`, '_blank');
       } else if (ai === 'gemini') {
         rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
         window.open(`https://gemini.google.com/?q=${q}`, '_blank');
@@ -164,7 +166,7 @@
         rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
         window.open(`https://kimi.moonshot.cn/?q=${q}`, '_blank');
         window.open(`https://tongyi.aliyun.com/qianwen/?q=${q}`, '_blank');
-        window.open(`https://chatgpt.com/?q=${q}`, '_blank');
+        window.open(`https://chatgpt.com/?prompt=${q}`, '_blank');
         window.open(`https://gemini.google.com/?q=${q}`, '_blank');
         // 同时也打开一个传统搜索（可选）
         setTimeout(() => {
@@ -176,7 +178,20 @@
       rightFrame.src = rightUrl;
     }
 
+    function performAugmentedSearch() {
+      const query = searchInput.value.trim();
+      if (!query) return;
+
+      document.title = query;
+      const q = encodeURIComponent(query);
+
+      // 立即新开窗口执行增广搜索：Google + ChatGPT
+      window.open(`https://www.google.com/search?q=${q}`, '_blank');
+      window.open(`https://chatgpt.com/?prompt=${q}`, '_blank');
+    }
+
     searchBtn.addEventListener('click', performSearch);
+    augmentBtn.addEventListener('click', performAugmentedSearch);
     searchInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') performSearch();
     });
