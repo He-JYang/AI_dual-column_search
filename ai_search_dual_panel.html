@@ -150,21 +150,22 @@
       let rightUrl = 'about:blank';
       const ai = aiSelect.value;
 
+
+      // kimi 提问还可以添加 &system_prompt=xxx 来设置系统提示词
       if (ai === 'kimi') {
-        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
+        rightUrl = `http://kimi.com/_prefill_chat?prefill_prompt=${q}&send_immediately=true`;
       } else if (ai === 'qwen') {
-        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
+        rightUrl = `http://kimi.com/_prefill_chat?prefill_prompt=${q}&send_immediately=true`;
         window.open(`https://tongyi.aliyun.com/qianwen/?q=${q}`, '_blank');
       } else if (ai === 'gpt') {
-        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
+        rightUrl = `http://kimi.com/_prefill_chat?prefill_prompt=${q}&send_immediately=true`;
         window.open(`https://chatgpt.com/?prompt=${q}`, '_blank');
       } else if (ai === 'gemini') {
-        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
+        rightUrl = `http://kimi.com/_prefill_chat?prefill_prompt=${q}&send_immediately=true`;
         window.open(`https://gemini.google.com/?q=${q}`, '_blank');
       } else if (ai === 'ALL') {
         // 所有 AI 新窗口打开（避免 iframe 被拦截）
-        rightUrl = `https://kimi.moonshot.cn/?q=${q}`;
-        window.open(`https://kimi.moonshot.cn/?q=${q}`, '_blank');
+        rightUrl = `http://kimi.com/_prefill_chat?prefill_prompt=${q}&send_immediately=true`;
         window.open(`https://tongyi.aliyun.com/qianwen/?q=${q}`, '_blank');
         window.open(`https://chatgpt.com/?prompt=${q}`, '_blank');
         window.open(`https://gemini.google.com/?q=${q}`, '_blank');
